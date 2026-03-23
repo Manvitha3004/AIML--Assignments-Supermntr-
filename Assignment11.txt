@@ -1,0 +1,94 @@
+ASSIGNMENT: KNN IN REAL LIFE
+Date: 07/03/2026
+=============================================
+
+WHAT IS KNN?
+K-Nearest Neighbours (KNN) is a simple but powerful algorithm: to classify
+or recommend something, look at its K closest neighbours in a dataset and
+let them "vote." No training phase — just distance calculations at query time.
+
+The core question is always: what does "close" mean?
+- For numbers, we use Euclidean distance
+- For ratings, cosine similarity works well
+- For text, there are many options
+Netflix uses a high-dimensional version of this idea.
+
+
+HOW NETFLIX USES KNN
+Each user is represented as a vector of ratings — one number per movie.
+Example: If you rated Inception 5/5 and Interstellar 4/5, your vector
+looks like [5, 4, ...]
+
+Netflix finds users whose vectors are close to yours (your K nearest
+neighbours), then recommends movies those neighbours loved but you
+haven't seen yet.
+
+
+THE DISTANCE FORMULA
+KNN computes the Euclidean distance between two users' rating vectors.
+For users A and B with ratings on N movies:
+
+  distance(A, B) = sqrt( sum of (A_i - B_i)^2 )
+
+A smaller distance = more similar taste = higher priority neighbour.
+
+
+SIMILARITY EXAMPLE — RATINGS TABLE
+User     | Inception | Interstellar | Parasite | The Crown
+---------|-----------|--------------|----------|-----------
+Arjun    |     5     |      5       |    2     |     1
+Priya    |     4     |      5       |    3     |     2
+Sam      |     2     |      1       |    5     |     5
+Mei      |     3     |      3       |    4     |     4
+Carlos   |     5     |      4       |    1     |     2
+
+
+DISTANCE CALCULATIONS (example: target = Arjun)
+---------------------------------------------
+Arjun vs Priya:
+  sqrt((5-4)^2 + (5-5)^2 + (2-3)^2 + (1-2)^2)
+  = sqrt(1 + 0 + 1 + 1)
+  = sqrt(3)
+  ≈ 1.73   <-- closest neighbour
+
+Arjun vs Carlos:
+  sqrt((5-5)^2 + (5-4)^2 + (2-1)^2 + (1-2)^2)
+  = sqrt(0 + 1 + 1 + 1)
+  = sqrt(3)
+  ≈ 1.73   <-- equally close
+
+Arjun vs Mei:
+  sqrt((5-3)^2 + (5-3)^2 + (2-4)^2 + (1-4)^2)
+  = sqrt(4 + 4 + 4 + 9)
+  = sqrt(21)
+  ≈ 4.58
+
+Arjun vs Sam:
+  sqrt((5-2)^2 + (5-1)^2 + (2-5)^2 + (1-5)^2)
+  = sqrt(9 + 16 + 9 + 16)
+  = sqrt(50)
+  ≈ 7.07   <-- farthest
+
+
+RESULT FOR K=2 (Arjun's nearest neighbours)
+  Rank 1: Priya  (distance ≈ 1.73)
+  Rank 2: Carlos (distance ≈ 1.73)
+
+Recommendation: Movies that Priya and Carlos rated highly
+but Arjun hasn't watched yet would be recommended to Arjun.
+
+
+HOW K AFFECTS RESULTS
+- Small K (1-2): Very personalised but noisy recommendations
+- Large K:       Smoother results but may dilute relevance
+- Netflix uses large K with additional weighting tricks
+
+
+LIMITATIONS OF KNN IN PRACTICE
+- Slow at scale (Netflix has hundreds of millions of users)
+- Pure KNN requires comparing against every user — O(n) per query
+- Real systems use:
+    * Approximate Nearest Neighbour (ANN) methods
+    * Dimensionality reduction (SVD, matrix factorisation)
+    * Clustering to pre-group similar users
+

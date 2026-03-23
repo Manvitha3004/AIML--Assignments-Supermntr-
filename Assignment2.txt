@@ -1,0 +1,35 @@
+Assignment (09/02/2026)
+Assignment Name: AI Around Me
+Description: List 10 real-life AI applications you use daily and explain how ML might work behind each in 2 lines.
+
+
+1. Smartphone Face Unlock
+Uses machine learning models trained on facial features to recognize and match my face with stored data for secure access.
+
+2. Google Search Engine
+ML analyzes my search history, location, and popular queries to rank and personalize search results.
+
+3. YouTube/Netflix Recommendations
+Recommendation algorithms learn from my watch history and preferences to suggest videos or movies I’m likely to enjoy.
+
+4. Voice Assistants (Siri / Google Assistant / Alexa)
+Speech recognition models convert voice to text and NLP models understand intent to generate responses.
+
+5. Email Spam Filter
+ML models classify emails by learning patterns from previously marked spam and legitimate messages.
+
+6. Google Maps Navigation
+ML predicts traffic conditions by analyzing real-time data from users, past traffic trends, and GPS signals.
+
+7. Social Media Feeds (Instagram / Facebook / X)
+Algorithms analyze my interactions (likes, comments, shares) to rank posts that appear on my feed.
+
+8. Autocorrect & Predictive Text
+Language models learn from typing patterns and common word sequences to suggest or correct words.
+
+9. Online Shopping Recommendations (Amazon / Flipkart)
+ML tracks browsing and purchase history to recommend products similar to my interests.
+
+10. Photo Enhancement & Filters
+Computer vision models detect faces, lighting, and objects to automatically enhance images or apply filters.
+
