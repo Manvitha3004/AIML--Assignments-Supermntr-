@@ -1,5 +1,7 @@
 """ Assignment - 7th Feb 2026
-strong code for password authentication using Python """
+strong code for password authentication using Python 
+
+"""
 
 import hashlib
 import hmac
